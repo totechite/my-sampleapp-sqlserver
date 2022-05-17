@@ -5,7 +5,7 @@
   "main": "./dist/backend/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx prisma generate && npx tsc",
+    "build": "npx prisma generate && npx tsc -p ./src/backend && npx tsc -p ./src/frontend",
     "start": "node ./dist/backend/app.js"
   },
   "keywords": [],
