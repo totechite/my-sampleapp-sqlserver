@@ -5,7 +5,7 @@ Dockerイメージのビルド
 --------------------------
 （例）
 ```shell:example
-docker build --tag sampleapp:v1 --build-arg DATABASE_URL=sqlserver://example.net DATABASE_PORT=1433 DB_NAME=sampleapp USER=dbuser PASSWORD=passw0rd .
+docker build --tag sampleapp:v1 --build-arg DATABASE_URL="sqlserver://example.net" --build-arg DATABASE_PORT="1433" --build-arg DB_NAME="sampleapp" --build-arg USER="dbuser" --build-arg PASSWORD="passw0rd" .
 ```    
 
 ### --build-argのパラメータについて
@@ -38,7 +38,7 @@ Dockerイメージの実行
 ---------------------------
 (例)
 ```shell:example
-docker run sampleapp:v1 --name sampleapp-proc -p 80:8000
+docker run -p "80:8000" sampleapp:v1
 ```
 
 DockerイメージのPush
@@ -48,5 +48,6 @@ DockerイメージのPush
 docker login yourregistry.azurecr.io
 //　認証情報の入力
 
-docker push yourregistry.azurecr.io/sampleapp
+docker tag sampleapp:v1 yourregistry.azurecr.io/sampleapp:v1
+docker push yourregistry.azurecr.io/sampleapp:v1
 ```
