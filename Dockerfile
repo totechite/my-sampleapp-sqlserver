@@ -10,8 +10,11 @@ ARG PASSWORD
 COPY . .
 
 RUN npm install && \
-    echo DATABASE_URL="$DATABASE_URL:$DATABASE_PORT;database=$DB_NAME;user=$USER;password=$PASSWORD;integratedSecurity=true;trustServerCertificate=true;" > .env && \
-    npx prisma db push ; \
+    echo 'DATABASE_URL=$DATABASE_URL' > .env && \
+    echo 'DATABASE_PORT=$DATABASE_PORT\' >> .env && \
+    echo 'DB_NAME=$DB_NAME\' >> .env && \
+    echo 'DB_USER=$DB_USER\' >> .env && \
+    echo 'PASSWORD=$PASSWORD\' >> .env && \
     npm run build ; 
 EXPOSE 8000/tcp
 EXPOSE 8000/udp
