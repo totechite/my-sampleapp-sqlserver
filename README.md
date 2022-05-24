@@ -5,14 +5,14 @@ Dockerイメージのビルド
 --------------------------
 （例）
 ```shell:example
-docker build --tag sampleapp:v1 --build-arg DATABASE_URL="sqlserver://example.net" --build-arg DATABASE_PORT="1433" --build-arg DB_NAME="sampleapp" --build-arg USER="dbuser" --build-arg PASSWORD="passw0rd" .
+docker build --tag sampleapp:v1 --build-arg DATABASE_URL="example.net" --build-arg DATABASE_PORT="1433" --build-arg DB_NAME="sampleapp" --build-arg DB_USER="dbuser" --build-arg PASSWORD="passw0rd" .
 ```    
 
 ### --build-argのパラメータについて
 
  - DATABASE_URL
 
-    SQLServerのホスト名（”sqlserver://”に続く形で設定する。）
+    SQLServerのホスト名
 
  - DATABASE_PORT
 
@@ -22,17 +22,13 @@ docker build --tag sampleapp:v1 --build-arg DATABASE_URL="sqlserver://example.ne
 
     接続するDB名
 
- - USER
+ - DB_USER
 
     DBにアクセスするユーザー名
 
  - PASSWORD
 
     ユーザーのパスワード
-
-    ※以下の文字が含まれる場合、"｛｝"で囲む。   
-    `':', '/', '?', '#', '[', ']', '@', '!', '$', '&', "'", '(', ')', '*', '+', ',', ';', '='`   
-    例： p@ss -> p\{@\}ss   
 
 Dockerイメージの実行
 ---------------------------
